@@ -16,14 +16,16 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
+	string windowName ("DisplayPicture");
+
 	cv::Mat img = cv::imread(argv[1], -1);
 	if (img.empty())
 		return -1;
 
-	cv::namedWindow("DisplayPicture", cv::WINDOW_AUTOSIZE);
-	cv::imshow("DisplayPicture", img);
+	cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
+	cv::imshow(windowName, img);
 
 	cv::waitKey(0);
-	cv::destroyWindow("DisplayPicture");
+	cv::destroyWindow(windowName);
 }
 

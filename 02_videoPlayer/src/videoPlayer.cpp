@@ -36,11 +36,17 @@ int main(int argc, char**argv)
 	if (argc != 2)
 	{
 		cerr << "Usage: " << argv[0] << " <video path name>" << endl;
+		cerr << "\t[s]: Single Step" << endl;
+		cerr << "\t[r]: Run mode" << endl;
+		cerr << "\t[ESC]: exit" << endl;
 
 		return 1;
 	}
 
-	cv::namedWindow("VideoPlayer", cv::WINDOW_AUTOSIZE);
+	string windowName ("VideoPlayer");
+	string trackbarName ("Position");
+
+	cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
 
 	g_cap.open(string(argv[1]));
 
@@ -50,7 +56,7 @@ int main(int argc, char**argv)
 
 	cout << "Video has " << frames << " frames of dimensions(" << tmpw << ", " << tmph << ")." << endl;
 
-	// cv::createTrackbar("Position", "VideoPlayer", &g_slider_position, frames, onChangeTrackbarSlide);
+	// cv::createTrackbar(trackbarName, windowName, &g_slider_position, frames, onChangeTrackbarSlide);
 
 	cv::Mat frame;
 	bool trackBarToBeInitialized = true;
@@ -64,15 +70,15 @@ int main(int argc, char**argv)
 
 			if (trackBarToBeInitialized)
 			{
-				cv::createTrackbar("Position", "VideoPlayer", &g_slider_position, frames, onChangeTrackbarSlide);
+				cv::createTrackbar(trackbarName, windowName, &g_slider_position, frames, onChangeTrackbarSlide);
 				trackBarToBeInitialized = false;
 			}
 
 			int current_pos = (int) g_cap.get(cv::CAP_PROP_POS_FRAMES);
 			g_userSetPosition = false;
 
-			cv::setTrackbarPos("Position", "VideoPlayer", current_pos);
-			cv::imshow("VideoPlayer", frame);
+			cv::setTrackbarPos(trackbarName, windowName, current_pos);
+			cv::imshow(windowName, frame);
 
 			g_run -= 1;
 		}
@@ -92,7 +98,7 @@ int main(int argc, char**argv)
 			break;
 	}
 
-	cv::destroyWindow("VideoPlayer");
+	cv::destroyWindow(windowName);
 
 	return 0;
 }

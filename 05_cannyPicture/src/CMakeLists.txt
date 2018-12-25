@@ -20,27 +20,22 @@
 # License is allowed only after express negotiation of conditions
 # with the authors.
 
-cmake_minimum_required(
-	VERSION 3.1
+SET (SOURCES
+	cannyPicture.cpp
 )
 
-project(
-	ComputerVisionSamples
+SET (HEADERS
 )
 
-SET(CMAKE_CXX_FLAGS "-std=c++14")
+include_directories ("/home/giuliano/catramms/opencv/include/opencv4")
 
+link_directories ("/home/giuliano/catramms/opencv/lib")
 
-set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_BUILD_TYPE RelWithDebInfo)
-#set(CMAKE_BUILD_TYPE Release)
+add_executable(cannyPicture ${SOURCES} ${HEADERS})
 
-set(COMPUTERVISION_VERSION_MAJOR 1)
-set(COMPUTERVISION_VERSION_MINOR 0)
+target_link_libraries (cannyPicture opencv_core)
+target_link_libraries (cannyPicture opencv_highgui)
+target_link_libraries (cannyPicture opencv_imgcodecs)
+target_link_libraries (cannyPicture opencv_imgproc)
 
-add_subdirectory(01_displayPicture/src)
-add_subdirectory(02_videoPlayer/src)
-add_subdirectory(03_smoothingPicture/src)
-add_subdirectory(04_pyrUpAndDown/src)
-add_subdirectory(05_cannyPicture/src)
 
