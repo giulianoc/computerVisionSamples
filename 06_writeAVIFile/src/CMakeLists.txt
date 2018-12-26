@@ -20,28 +20,28 @@
 # License is allowed only after express negotiation of conditions
 # with the authors.
 
-cmake_minimum_required(
-	VERSION 3.1
+SET (SOURCES
+	writeAVIFile.cpp
 )
 
-project(
-	ComputerVisionSamples
+SET (HEADERS
 )
 
-SET(CMAKE_CXX_FLAGS "-std=c++14")
+include_directories ("/home/giuliano/catramms/opencv/include/opencv4")
+
+link_directories ("/home/giuliano/catramms/opencv/lib")
+link_directories ("/home/giuliano/catramms/ffmpeg-4.0.2/lib")
+
+add_executable(writeAVIFile ${SOURCES} ${HEADERS})
+
+target_link_libraries (writeAVIFile opencv_core)
+target_link_libraries (writeAVIFile opencv_highgui)
+target_link_libraries (writeAVIFile opencv_imgcodecs)
+target_link_libraries (writeAVIFile opencv_imgproc)
+target_link_libraries (writeAVIFile opencv_videoio)
+target_link_libraries (writeAVIFile opencv_video)
+target_link_libraries (writeAVIFile opencv_videostab)
+target_link_libraries (writeAVIFile avcodec)
 
 
-set(CMAKE_BUILD_TYPE Debug)
-#set(CMAKE_BUILD_TYPE RelWithDebInfo)
-#set(CMAKE_BUILD_TYPE Release)
-
-set(COMPUTERVISION_VERSION_MAJOR 1)
-set(COMPUTERVISION_VERSION_MINOR 0)
-
-add_subdirectory(01_displayPicture/src)
-add_subdirectory(02_videoPlayer/src)
-add_subdirectory(03_smoothingPicture/src)
-add_subdirectory(04_pyrUpAndDown/src)
-add_subdirectory(05_cannyPicture/src)
-add_subdirectory(06_writeAVIFile/src)
 
