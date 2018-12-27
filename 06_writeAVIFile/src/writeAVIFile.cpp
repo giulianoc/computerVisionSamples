@@ -11,7 +11,7 @@ int main(int argc, char** argv)
 
 	if (argc != 3)
 	{
-		cerr << "Usage: " << argv[0] << " <in video path name> <out video path name>" << endl;
+		cerr << "Usage: " << argv[0] << " <in video path name> <out video path name> (better avi format)" << endl;
 		cerr << "\t[ESC]: exit" << endl;
 
 		return 1;
