@@ -1,5 +1,5 @@
-#include "opencv2/highgui/highgui.hpp"
-#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
 #include "opencv2/imgcodecs.hpp"
 #include <iostream>
 #include <fstream>
@@ -30,7 +30,8 @@ int main(int argc, char** argv)
 
 	cv::VideoWriter writer;
 
-	writer.open(argv[2], cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), fps, size);
+	// writer.open(argv[2], cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), fps, size);
+	writer.open(argv[2], cv::VideoWriter::fourcc('X', '2', '6', '4'), fps, size);
 
 	cv::namedWindow(windowName, cv::WINDOW_AUTOSIZE);
 	cv::namedWindow(windowNameLogPolar, cv::WINDOW_AUTOSIZE);
